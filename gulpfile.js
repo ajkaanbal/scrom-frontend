@@ -41,6 +41,12 @@ gulp.task('vendorCSS', function(){
         .pipe(gulp.dest('./build'));
 });
 
+gulp.task('copy-fonts', function() {
+    gulp.src(['./app/components/**/fonts/*.{ttf,woff,eot,svg}'])
+        .pipe(plugins.flatten())
+        .pipe(gulp.dest('./build/fonts'));
+});
+
 gulp.task('copy-index', function() {
     gulp.src('./app/index.html')
         .pipe(gulp.dest('./build'));
@@ -68,4 +74,14 @@ gulp.task('connect', plugins.connect.server({
     livereload: true
 }));
 
-gulp.task('default',['connect','scripts','templates','css','copy-index','vendorJS','vendorCSS','watch']);
+gulp.task('default',[
+  'connect',
+  'scripts',
+  'templates',
+  'css',
+  'copy-index',
+  'copy-fonts',
+  'vendorJS',
+  'vendorCSS',
+  'watch'
+]);
