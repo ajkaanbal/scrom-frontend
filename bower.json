@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "main": "app.js",
+  "version": "0.0.1",
+  "authors": [
+    "Ricardo M. Vilchis <ajkaanbal@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.14",
+    "angular-route": "~1.2.14"
+  },
+  "dependencies": {
+    "foundation": "~5.2.3",
+    "font-awesome": "~4.1.0"
+  }
+}
