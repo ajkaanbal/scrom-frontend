@@ -1,36 +1,31 @@
 "use strict"
 var gulp = require('gulp');
+var source = require('vinyl-source-stream')
+var browserify = require('browserify')
 var plugins = require("gulp-load-plugins")({lazy:false});
 
-gulp.task('scripts', function(){
-    //combine all js files of the app
-    gulp.src(['!./app/main/**/*_test.js','./app/main/**/*.js'])
-        .pipe(plugins.jshint())
-        .pipe(plugins.jshint.reporter('default'))
-        .pipe(plugins.concat('app.js'))
-        .pipe(gulp.dest('./build'));
-});
 
 gulp.task('templates',function(){
     //combine all template files of the app into a js file
-    gulp.src(['!./app/index.html',
-        './app/**/*.html'])
-        .pipe(plugins.angularTemplatecache('templates.js',{standalone:true}))
-        .pipe(gulp.dest('./build'));
+    gulp.src(['./app/**/*.html'])
+    .pipe(plugins.flatten())
+    .pipe(gulp.dest('./build/templates'));
 });
 
 gulp.task('css', function(){
-    gulp.src('./app/**/*.css')
+    gulp.src('./app/*.css')
         .pipe(plugins.concat('app.css'))
         .pipe(gulp.dest('./build'));
 });
 
-gulp.task('vendorJS', function(){
+gulp.task('scripts', function(){
     //concatenate vendor JS files
-    gulp.src(['!./app/components/**/*.min.js',
-        './app/components/**/*.js'])
-        .pipe(plugins.concat('lib.js'))
-        .pipe(gulp.dest('./build'));
+
+    browserify('./app/app.js').bundle()
+      .pipe(source('./app/app.js'))
+      .pipe(plugins.flatten())
+      .pipe(gulp.dest('./build'))
+
 });
 
 gulp.task('vendorCSS', function(){
@@ -63,7 +58,7 @@ gulp.task('watch',function(){
     });
     gulp.watch(['./app/**/*.js','!./app/**/*test.js'],['scripts']);
     gulp.watch(['!./app/index.html','./app/**/*.html'],['templates']);
-    gulp.watch('./app/**/*.css',['css']);
+    gulp.watch('./app/*.css',['css']);
     gulp.watch('./app/index.html',['copy-index']);
 
 });
@@ -81,7 +76,6 @@ gulp.task('default',[
   'css',
   'copy-index',
   'copy-fonts',
-  'vendorJS',
   'vendorCSS',
   'watch'
 ]);

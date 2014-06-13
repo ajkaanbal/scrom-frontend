@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="scrom">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>SCROM</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href="lib.css" rel="stylesheet">
     <link href="app.css" rel="stylesheet">
   </head>
-  <body ng-app="app">
-    <div class="container" ng-view=""></div>
+  <body ng-controller="ProjectListCtrl">
 
-    <div class="row">
-      <div class="large-12 columns">
-        <ul class="button-group">
-          <li><a href="#" class="button">Projects</a></li>
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name"><h1><a href="#">SCROM</a></h1></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li><a class="button" href="#/projects">Projects</a></li>
         </ul>
+      </section>
+    </nav>
 
-        <p>
-          <img src="http://placehold.it/1000x400&text=[SCROM]"/>
-        </p>
+    <section ng-view>
+      <div class="scrom-logo center">
+        <span class="fa fa-cube"></span>
       </div>
-    </div>
+    </section>
 
-    <script src="lib.js"></script>
-    <script src="templates.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

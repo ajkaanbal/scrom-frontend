@@ -1,9 +1,9 @@
 {
-  "name": "gulp-ng-seed",
+  "name": "scrom",
   "version": "0.0.0",
-  "main": "app.js",
+  "main": "app/app.js",
   "devDependencies": {
-    "gulp": "~3.5.5",
+    "gulp": "~3.8.0",
     "gulp-angular-templatecache": "^1.1.0",
     "gulp-concat": "~2.1.7",
     "gulp-connect": "^1.0.7",
@@ -12,6 +12,17 @@
     "gulp-load-plugins": "~0.4.0",
     "karma": "^0.12.1",
     "karma-chrome-launcher": "^0.1.2",
-    "karma-jasmine": "^0.1.5"
+    "karma-jasmine": "^0.1.5",
+    "debowerify": "^0.7.1",
+    "vinyl-source-stream": "^0.1.1",
+    "browserify": "^4.1.10"
+  },
+  "browserify": {
+    "transform": [
+      "debowerify"
+    ]
+  },
+  "dependencies": {
+    "domready": "^1.0.5"
   }
 }
