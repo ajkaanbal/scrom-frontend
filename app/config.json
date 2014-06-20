@@ -1,0 +1,7 @@
+{
+    "name": "config",
+    "constants": {
+        "api_url": "http://localhost:6543",
+        "projects_path": "/projects"
+    }
+}

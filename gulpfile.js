@@ -28,6 +28,11 @@ gulp.task('scripts', function(){
 
 });
 
+gulp.task('copy-config', function() {
+    gulp.src('./app/config.json')
+        .pipe(gulp.dest('./build'));
+});
+
 gulp.task('vendorCSS', function(){
     //concatenate vendor CSS files
     gulp.src(['!./app/components/**/*.min.css',
@@ -57,6 +62,7 @@ gulp.task('watch',function(){
             .pipe(plugins.connect.reload());
     });
     gulp.watch(['./app/**/*.js','!./app/**/*test.js'],['scripts']);
+    gulp.watch(['./app/**/*.json'],['copy-config', 'scripts']);
     gulp.watch(['!./app/index.html','./app/**/*.html'],['templates']);
     gulp.watch('./app/*.css',['css']);
     gulp.watch('./app/index.html',['copy-index']);

@@ -1,0 +1,9 @@
+<div class="row">
+  <h1>Project: <strong>{{ project.name }}</strong></h1>
+  <ul>
+    {{ project.structure.path }}
+    <li ng-repeat="content in project.structure.contents">
+      {{ content.path }}
+    </li>
+  </ul>
+</div>

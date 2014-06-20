@@ -15,7 +15,8 @@
     "karma-jasmine": "^0.1.5",
     "debowerify": "^0.7.1",
     "vinyl-source-stream": "^0.1.1",
-    "browserify": "^4.1.10"
+    "browserify": "^4.1.10",
+    "gulp-ng-constant": "^0.1.0"
   },
   "browserify": {
     "transform": [

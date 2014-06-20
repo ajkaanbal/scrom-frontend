@@ -1,5 +1,8 @@
 <div class="row">
+<h1>Projects: </h1>
   <ul>
-    <li ng-repeat="project in projects">{{ project }}</li>
+    <li ng-repeat="project in projects">
+      <a href="#/projects/{{ project }}" title="" >{{ project }}</a>
+    </li>
   </ul>
 </div>
